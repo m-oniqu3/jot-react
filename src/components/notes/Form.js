@@ -3,9 +3,14 @@ import Dropdown from "./Dropdown";
 import styled from "./Form.module.css";
 
 const Form = () => {
+  const [title, setTitle] = useState("");
+  const [note, setNote] = useState("");
+  const [categoryChosen, setCategoryChosen] = useState("");
+
   const [showForm, setShowForm] = useState(false);
   const ref = useRef();
 
+  //showForm Handlers
   const showFormHandler = () => {
     setShowForm(true);
   };
@@ -26,19 +31,42 @@ const Form = () => {
     };
   }, [showForm]);
 
+  //inputHandlers
+
+  const categoryHandler = (option) => {
+    setCategoryChosen(option);
+  };
+
+  const formSubmitHandler = (e) => {
+    e.preventDefault();
+    const noteDetails = { title, note, categoryChosen };
+    console.log(noteDetails);
+  };
   return (
     <section ref={ref} className={styled.formWrap} onClick={showFormHandler}>
       <p> Add new note</p>
 
       {showForm && (
-        <form>
+        <form onSubmit={formSubmitHandler}>
           <label htmlFor="title">Title</label>
-          <input type="text" name="title" placeholder="Title your note" />
+          <input
+            type="text"
+            name="title"
+            placeholder="Title your note"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
 
           <label htmlFor="">Note</label>
-          <input type="text" name="note" placeholder="Jot it down here..." />
+          <input
+            type="text"
+            name="note"
+            placeholder="Jot it down here..."
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+          />
 
-          <Dropdown />
+          <Dropdown sendCategory={categoryHandler} />
 
           <button type="submit" className={styled.btnSubmit}>
             Submit
