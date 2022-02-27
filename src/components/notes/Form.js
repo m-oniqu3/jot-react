@@ -1,4 +1,5 @@
 import React from "react";
+import Dropdown from "./Dropdown";
 import styled from "./Form.module.css";
 
 const Form = () => {
@@ -11,6 +12,8 @@ const Form = () => {
 
         <label htmlFor="">Note</label>
         <input type="text" name="note" placeholder="Jot it down here..." />
+
+        <Dropdown />
 
         <button type="submit" className={styled.btnSubmit}>
           Submit
