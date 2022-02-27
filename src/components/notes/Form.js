@@ -6,6 +6,7 @@ const Form = () => {
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
   const [categoryChosen, setCategoryChosen] = useState("");
+  const [timeStamp, setTimeStamp] = useState("");
 
   const [showForm, setShowForm] = useState(false);
   const ref = useRef();
@@ -37,11 +38,27 @@ const Form = () => {
     setCategoryChosen(option);
   };
 
+  const noteHandler = (e) => {
+    setNote(e.target.value);
+    const time = new Date().toDateString();
+    setTimeStamp(time);
+  };
+
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    const noteDetails = { title, note, categoryChosen };
-    console.log(noteDetails);
+    const noteDetails = { title, note, categoryChosen, timeStamp };
+
+    //can't submit empty fields
+    !note || !title
+      ? alert("Fields must not be empty")
+      : console.table(noteDetails);
+
+    setShowForm(false);
+    setTitle("");
+    setNote("");
+    setCategoryChosen("General");
   };
+
   return (
     <section ref={ref} className={styled.formWrap} onClick={showFormHandler}>
       <p> Add new note</p>
@@ -63,7 +80,7 @@ const Form = () => {
             name="note"
             placeholder="Jot it down here..."
             value={note}
-            onChange={(e) => setNote(e.target.value)}
+            onChange={noteHandler}
           />
 
           <Dropdown sendCategory={categoryHandler} />
