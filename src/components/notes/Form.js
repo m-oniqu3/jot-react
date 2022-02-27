@@ -8,6 +8,7 @@ const Form = ({ sendNote }) => {
   const [note, setNote] = useState("");
   const [categoryChosen, setCategoryChosen] = useState("");
   const [timeStamp, setTimeStamp] = useState("");
+  const [currentTime, setCurrentTime] = useState("");
 
   const [showForm, setShowForm] = useState(false);
   const ref = useRef();
@@ -44,8 +45,10 @@ const Form = ({ sendNote }) => {
   const noteHandler = (e) => {
     setNote(e.target.value);
 
-    const time = new Date().toDateString();
-    setTimeStamp(time);
+    const date = new Date().toDateString();
+    const time = new Date().toLocaleTimeString();
+    setTimeStamp(date);
+    setCurrentTime(time);
   };
 
   //submit form
@@ -53,7 +56,7 @@ const Form = ({ sendNote }) => {
     e.preventDefault();
 
     //*creates object with the state values
-    const noteDetails = { title, note, categoryChosen, timeStamp };
+    const noteDetails = { title, note, categoryChosen, timeStamp, currentTime };
 
     //*show an alert if the fields are empty, if they aren't then send the object to the app component
     !note || !title ? alert("Fields must not be empty") : sendNote(noteDetails);
