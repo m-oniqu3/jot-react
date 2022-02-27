@@ -7,7 +7,11 @@
   font-family: "Poppins", sans-serif;
 }
 
-.grid {
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+/* .grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
@@ -16,4 +20,4 @@
   grid-column: 2/-1;
   padding: 1rem;
   width: 100%;
-}
+} */

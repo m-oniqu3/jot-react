@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/header/Header";
-import Navigation from "./components/nav/Navigation";
+//import Navigation from "./components/nav/Navigation";
 import Form from "./components/notes/Form";
 import NoteList from "./components/notes/NoteList";
 
@@ -12,10 +12,10 @@ function App() {
     setReceivedNote((previousNotes) => [note, ...previousNotes]);
 
   return (
-    <div className="grid">
-      <div className="nav">
+    <div className="container">
+      {/* <div className="nav">
         <Navigation />
-      </div>
+      </div> */}
 
       <div className="main">
         <Header />
