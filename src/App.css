@@ -15,4 +15,5 @@
 .main {
   grid-column: 2/-1;
   padding: 1rem;
+  width: 100%;
 }

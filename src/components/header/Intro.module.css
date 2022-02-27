@@ -1,6 +1,7 @@
 article {
-  max-width: 150px;
+  width: 50%;
 }
+
 .heading {
   font-size: 1.2rem;
   font-weight: 600;
