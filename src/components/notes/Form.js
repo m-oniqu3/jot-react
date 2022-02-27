@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Dropdown from "./Dropdown";
 import styled from "./Form.module.css";
 
-const Form = () => {
+const Form = ({ sendNote }) => {
   //states
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
@@ -48,6 +48,7 @@ const Form = () => {
     setTimeStamp(time);
   };
 
+  //submit form
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
@@ -55,9 +56,7 @@ const Form = () => {
     const noteDetails = { title, note, categoryChosen, timeStamp };
 
     //*show an alert if the fields are empty, if they aren't then send the object to the app component
-    !note || !title
-      ? alert("Fields must not be empty")
-      : console.table(noteDetails);
+    !note || !title ? alert("Fields must not be empty") : sendNote(noteDetails);
 
     //*reset values to original states
     setShowForm(false);
