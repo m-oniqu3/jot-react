@@ -3,10 +3,12 @@ import styled from "./Dropdown.module.css";
 
 const Dropdown = ({ sendCategory }) => {
   const [category, setCategory] = useState("General");
+
   const getCategory = (e) => {
     setCategory(e.target.value);
   };
 
+  //* send the category selected to the form component
   useEffect(() => {
     sendCategory(category);
   }, [category, sendCategory]);

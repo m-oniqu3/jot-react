@@ -3,6 +3,7 @@ import Dropdown from "./Dropdown";
 import styled from "./Form.module.css";
 
 const Form = () => {
+  //states
   const [title, setTitle] = useState("");
   const [note, setNote] = useState("");
   const [categoryChosen, setCategoryChosen] = useState("");
@@ -38,21 +39,27 @@ const Form = () => {
     setCategoryChosen(option);
   };
 
+  //TODO get the time/date when the user creates note
+  //TODO try to fix this. I feel like something is wrong here
   const noteHandler = (e) => {
     setNote(e.target.value);
+
     const time = new Date().toDateString();
     setTimeStamp(time);
   };
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
+
+    //*creates object with the state values
     const noteDetails = { title, note, categoryChosen, timeStamp };
 
-    //can't submit empty fields
+    //*show an alert if the fields are empty, if they aren't then send the object to the app component
     !note || !title
       ? alert("Fields must not be empty")
       : console.table(noteDetails);
 
+    //*reset values to original states
     setShowForm(false);
     setTitle("");
     setNote("");
@@ -63,6 +70,7 @@ const Form = () => {
     <section ref={ref} className={styled.formWrap} onClick={showFormHandler}>
       <p> Add new note</p>
 
+      {/* /if showForm is true / if the section is clicked on then show the form */}
       {showForm && (
         <form onSubmit={formSubmitHandler}>
           <label htmlFor="title">Title</label>
@@ -74,7 +82,7 @@ const Form = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
 
-          <label htmlFor="">Note</label>
+          <label htmlFor="note">Note</label>
           <input
             type="text"
             name="note"
@@ -83,6 +91,7 @@ const Form = () => {
             onChange={noteHandler}
           />
 
+          {/* get the selected category from the dropdown componentand send it to the form component (parent) */}
           <Dropdown sendCategory={categoryHandler} />
 
           <button type="submit" className={styled.btnSubmit}>
