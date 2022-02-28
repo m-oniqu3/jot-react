@@ -1,12 +1,16 @@
 import React from "react";
 import styled from "./NoteList.module.css";
-const NoteList = ({ notelist }) => {
-  console.table(notelist);
+import Wrapper from "../wrapper/Wrapper";
 
+const NoteList = ({ notelist }) => {
   const notes = notelist.map((note) => {
     return (
       <article key={note.currentTime} className={styled.frame}>
-        <p>{note.title}</p>
+        <section className={styled.head}>
+          <p className={styled.title}>{note.title}</p>
+          <Wrapper content={note.categoryChosen} className={styled.category} />
+        </section>
+
         <p className={styled.note}>{note.note}</p>
 
         <section className={styled.actions}>

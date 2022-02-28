@@ -1,12 +1,9 @@
 .frame {
-  background-color: black;
-  color: white;
+  background-color: white;
+  box-shadow: 3.01754px 3.01754px 22.6316px rgba(0, 0, 0, 0.15);
+  color: black;
   padding: 0.8rem;
   border-radius: 10px;
-
-  /* max-width: 400px;
-
-  min-width: 250px; */
 }
 
 .note {
@@ -16,9 +13,6 @@
   border-radius: 5px;
   color: black;
   word-wrap: break-word;
-  /* max-width: 300px; */
-
-  /* height: 15vh; */
 }
 
 .time {
@@ -38,15 +32,22 @@
   align-items: center;
 }
 
-/* .noteGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-template-rows: masonry;
-  gap: 1rem;
-  margin: 2rem auto;
-} */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-/* .noteGrid {
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.category {
+  font-size: 0.8rem;
+}
+
+.noteGrid {
   margin: 2rem auto;
   gap: 1rem;
 }
@@ -65,19 +66,19 @@
     break-inside: avoid;
     margin-bottom: 1rem;
   }
-} */
-/* 
+}
+
 @media (min-width: 900px) {
   .noteGrid {
     display: column;
     columns: 4;
   }
-} */
+}
 
-/* @supports (grid-template-rows: masonry) {
+@supports (grid-template-rows: masonry) {
   .noteGrid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-template-rows: masonry;
     gap: 1rem;
     margin: 2rem auto;
@@ -86,4 +87,4 @@
   .noteGrid > * {
     margin-bottom: 0;
   }
-} */
+}
