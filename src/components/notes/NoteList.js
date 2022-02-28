@@ -2,12 +2,13 @@ import React from "react";
 import styled from "./NoteList.module.css";
 import Wrapper from "../wrapper/Wrapper";
 
-const NoteList = ({ notelist }) => {
+const NoteList = ({ notelist, deleteNote }) => {
   const notes = notelist.map((note) => {
     return (
       <article key={note.currentTime} className={styled.frame}>
         <section className={styled.head}>
           <p className={styled.title}>{note.title}</p>
+
           <Wrapper content={note.categoryChosen} className={styled.category} />
         </section>
 
@@ -15,7 +16,8 @@ const NoteList = ({ notelist }) => {
 
         <section className={styled.actions}>
           <b className={styled.time}>{note.timeStamp}</b>
-          <button className={styled.delete}>
+
+          <button className={styled.delete} onClick={() => deleteNote(note)}>
             <i className="fa-solid fa-trash fa-lg"></i>
           </button>
         </section>

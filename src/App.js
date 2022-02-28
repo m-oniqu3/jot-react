@@ -13,6 +13,10 @@ function App() {
   const sendNoteHandler = (note) =>
     setReceivedNote((previousNotes) => [note, ...previousNotes]);
 
+  //delete the selcted note and update the state
+  const deleteNoteHandler = (note) =>
+    setReceivedNote(receivedNote.filter((orignalNote) => orignalNote !== note));
+
   return (
     <div className="container">
       {/* <div className="nav">
@@ -26,7 +30,7 @@ function App() {
         <Form sendNote={sendNoteHandler} />
 
         {/* accept the note from the app component */}
-        <NoteList notelist={receivedNote} />
+        <NoteList notelist={receivedNote} deleteNote={deleteNoteHandler} />
       </div>
     </div>
   );
