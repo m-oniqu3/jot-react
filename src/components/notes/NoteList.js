@@ -15,7 +15,6 @@ const NoteList = ({ notelist }) => {
 
         <section className={styled.actions}>
           <b className={styled.time}>{note.timeStamp}</b>
-
           <button className={styled.delete}>
             <i className="fa-solid fa-trash"></i>
           </button>
