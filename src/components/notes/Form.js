@@ -9,7 +9,6 @@ const Form = ({ sendNote }) => {
   const [categoryChosen, setCategoryChosen] = useState("");
   const [timeStamp, setTimeStamp] = useState("");
   const [currentTime, setCurrentTime] = useState("");
-
   const [showForm, setShowForm] = useState(false);
   const ref = useRef();
 
@@ -75,23 +74,29 @@ const Form = ({ sendNote }) => {
       {/* /if showForm is true / if the section is clicked on then show the form */}
       {showForm && (
         <form onSubmit={formSubmitHandler}>
-          <label htmlFor="title">Title</label>
-          <input
-            type="text"
-            name="title"
-            placeholder="Title your note"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
+          <section className={styled.inputs}>
+            <article className={styled.field}>
+              <label htmlFor="title">Title</label>
+              <input
+                type="text"
+                name="title"
+                placeholder="Title your note"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+            </article>
 
-          <label htmlFor="note">Note</label>
-          <input
-            type="text"
-            name="note"
-            placeholder="Jot it down here..."
-            value={note}
-            onChange={noteHandler}
-          />
+            <article className={styled.field}>
+              <label htmlFor="note">Note</label>
+              <input
+                type="text"
+                name="note"
+                placeholder="Jot it down here..."
+                value={note}
+                onChange={noteHandler}
+              />
+            </article>
+          </section>
 
           {/* get the selected category from the dropdown componentand send it to the form component (parent) */}
           <Dropdown sendCategory={categoryHandler} />

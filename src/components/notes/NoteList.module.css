@@ -21,7 +21,7 @@
 
 .delete {
   padding: 8px 14px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 5px;
   font-weight: 700;
   background-color: #e9e9e9;
